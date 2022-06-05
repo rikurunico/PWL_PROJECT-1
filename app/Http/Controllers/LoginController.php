@@ -17,7 +17,7 @@ class LoginController extends Controller
             } 
 
             if ($user->status == 'customer') {
-                return redirect()->route('HomePage');
+                return redirect()->route('homePageCustomer');
             } 
         }
         return back()->with('loginError', 'Login Failed!');

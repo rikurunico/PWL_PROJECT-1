@@ -27,7 +27,7 @@ class RegisterController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->foto_profil = 'storage/profil/user.png';
-        $user->level = 'customer';
+        $user->status = 'customer';
         $user->no_hp = $request->no_hp;
         $user->jenis_kelamin = $request->jenis_kelamin;
         $user->alamat = $request->alamat;
