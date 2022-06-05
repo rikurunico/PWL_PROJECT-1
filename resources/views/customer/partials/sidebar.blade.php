@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('HomePage')}}" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="{{ asset('src/img/brandlogo.jpg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Toko Fast</span>
     </a>
@@ -44,13 +44,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('HomePage') }} " class="nav-link {{ ($tittle === "Home Page") ? 'active' : ''}}">
+                <a href="# " class="nav-link {{ ($tittle === "Home Page") ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Halaman Utama</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('ProfilePage') }}" class="nav-link {{ ($tittle === "Profile Page") ? 'active' : ''}}">
+                <a href="#" class="nav-link {{ ($tittle === "Profile Page") ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Halaman Profile</p>
                 </a>
@@ -68,7 +68,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('GalleryPage') }}" class="nav-link {{ ($tittle === "Gallery Page") ? 'active' : ''}}"">
+                <a href="#" class="nav-link {{ ($tittle === "Gallery Page") ? 'active' : ''}}"">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Bahan Dapur</p>
                 </a>

@@ -5,7 +5,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('HomePage') }} " class="nav-link {{ ($tittle === "Home Page") ? 'active' : ''}}" class="nav-link">Home</a>
+        <a href="# " class="nav-link {{ ($tittle === "Home Page") ? 'active' : ''}}" class="nav-link">Home</a>
       </li>
       <div class="dropdown">
         <button class="btn b dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
@@ -19,7 +19,7 @@
         </div>
       
       <li class="nav-item d-none d-sm-inline-block">
-      <a href="{{ route('ContactPage') }} " class="nav-link {{ ($tittle === "Contact Page") ? 'active' : ''}}" class="nav-link">Contact</a>
+      <a href="# " class="nav-link {{ ($tittle === "Contact Page") ? 'active' : ''}}" class="nav-link">Contact</a>
       </li>
     </ul>
 

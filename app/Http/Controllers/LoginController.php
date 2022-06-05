@@ -13,7 +13,7 @@ class LoginController extends Controller
             
             $user = Auth::user();
             if ($user->status == 'admin') {
-                return redirect()->route('HomePageAdmin');
+                return redirect()->route('homePageAdmin');
             } 
 
             if ($user->status == 'customer') {
@@ -26,6 +26,6 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route('loginPage');
+        return redirect()->route('LoginPage');
     }
 }

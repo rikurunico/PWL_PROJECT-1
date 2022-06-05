@@ -15,9 +15,9 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return redirect('/login');
+});
 
 Route::get('/login', function () {
     return view('loginpage.loginPage',
@@ -38,5 +38,9 @@ Route::middleware(['auth','cekStatus:admin'])->group(function () {
 });
 
 Route::middleware(['auth','cekStatus:customer'])->group(function () {
-    Route::get('/home', [HomePageController::class, 'index']) -> name('HomePage');
+    // Route::get('/home', [HomePageController::class, 'index']) -> name('HomePage');
+    Route::get('/home', function () {
+        return view('customer.dashboard',
+            ['tittle' => 'Customer Dashboard']); 
+    }) -> name('homePageCustomer');
 });
