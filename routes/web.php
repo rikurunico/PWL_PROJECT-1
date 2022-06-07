@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -16,11 +19,11 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::get('/', function () {
-    return redirect('/login');
+    return redirect()->route('LoginPage');
 });
 
 Route::get('/login', function () {
-    return view('loginpage.loginPage',
+    return view('loginPage.loginPage',
         ['tittle' => 'Login Page']); 
 }) -> name('LoginPage') -> middleware('guest');
 
@@ -35,7 +38,11 @@ Route::middleware(['auth','cekStatus:admin'])->group(function () {
         return view('admin.dashboard',
             ['tittle' => 'Admin Dashboard']); 
     }) -> name('homePageAdmin');
+    Route::resource('kategori', KategoriController::class);
+    Route::resource('produk', ProdukController::class);
 });
+
+Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard.homepage');
 
 Route::middleware(['auth','cekStatus:customer'])->group(function () {
     // Route::get('/home', [HomePageController::class, 'index']) -> name('HomePage');
