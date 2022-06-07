@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -20,7 +19,7 @@ class LoginController extends Controller
                 return redirect()->route('homePageCustomer');
             } 
         }
-        return back()->with('loginError', 'Login Failed!');
+        return back()->with('loginError', 'Username atau Password Salah!');
     }
 
     public function logout(Request $request)

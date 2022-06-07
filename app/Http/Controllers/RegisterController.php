@@ -26,13 +26,13 @@ class RegisterController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-        $user->foto_profil = 'storage/profil/user.png';
+        $user->foto_profil = 'storage/images/user.png';
         $user->status = 'customer';
         $user->no_hp = $request->no_hp;
         $user->jenis_kelamin = $request->jenis_kelamin;
         $user->alamat = $request->alamat;
         $user->save();
 
-        return redirect('/login')->with('success', 'Registration Success! Please Login');
+        return redirect('/login')->with('success', 'Registrasi Berhasil! Silahkan Login');
     }
 }
