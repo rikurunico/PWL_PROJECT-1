@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="height: 100vh">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="{{ asset('src/img/brandlogo.jpg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Toko Fast</span>
+      <img src="{{ asset('storage/images/logo.png') }}" alt="Diza Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Diza Shop</span>
     </a>
 
     <!-- Sidebar -->
@@ -10,10 +10,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ auth()->user()->foto }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset(auth()->user()->foto_profil) }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+          <a href="#" class="d-block">{{ auth()->user()->username }}</a>
         </div>
       </div>
 
@@ -35,7 +35,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ route('homePageAdmin') }} " class="nav-link {{ ($tittle === "Home Page") ? 'active' : ''}}">
+            <a href="{{ route('homePageAdmin') }} " class="nav-link {{ ($title === "Home Page") ? 'active' : ''}}">
             <i class="bi bi-speedometer2"></i>
               <p>
                 Dashboard
@@ -47,27 +47,56 @@
             <a href="#" class="nav-link">
             <i class="bi bi-clipboard2-data"></i>
               <p>
-              Database Toko
+              Database Diza Shop
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link {{ ($tittle === "Data Product") ? 'active' : ''}}"">
+                <a href="{{ route('produk.index') }}" class="nav-link {{ ($title === "Data Produk") ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data Product</p>
+                  <p>Data Produk</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{ route('kategori.index') }}" class="nav-link" {{ ($title === "Data Kategori") ? 'active' : ''}}>
                   <i class="far fa-circle nav-icon"></i>
-                  <p> Data Penjualan</p>
+                  <p> Data Kategori</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="pages/charts/inline.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data Suplier</p>
+                  <p>Data Customer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/charts/inline.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Supplier</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="bi bi-clipboard2-data"></i>
+              <p>
+              Database Transaksional
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link {{ ($title === "Data Transaksional") ? 'active' : ''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Penjualan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> Data Pengembalian</p>
                 </a>
               </li>
             </ul>
