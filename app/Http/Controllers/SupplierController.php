@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Supplier;
 
-class SupplierControlller extends Controller
+class SupplierController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -88,7 +89,7 @@ class SupplierControlller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Supplier $supplier)
     {
         $rules= [
             'nama_supplier' => 'required',

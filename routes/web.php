@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,7 @@ Route::middleware(['auth','cekStatus:admin'])->group(function () {
     }) -> name('homePageAdmin');
     Route::resource('kategori', KategoriController::class);
     Route::resource('produk', ProdukController::class);
+    Route::resource('supplier', SupplierController::class);
 });
 
 Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard.homepage');
