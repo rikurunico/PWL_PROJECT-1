@@ -13,7 +13,9 @@ class Supplier extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'nama_supplier'
+        'nama_supplier',
+        'deskripsi',
+        'gambar'
     ];
 
     public function produk()
