@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             [
                 [
                     'username' => 'AdminDiza',
-                    'foto_profil' => 'storage/images/admin.png',
+                    'foto_profil' => 'images/admin.png',
                     'email' => 'diza@admin.com',
                     'password' => Hash::make('admindiza'),
                     'status' => 'admin',
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
                 ],
                 [
                     'username' => 'CustomerDiza',
-                    'foto_profil' => 'storage/images/user.png',
+                    'foto_profil' => 'images/user.png',
                     'email' => 'diza@customer.com',
                     'password' => Hash::make('customerdiza'),
                     'status' => 'customer',
