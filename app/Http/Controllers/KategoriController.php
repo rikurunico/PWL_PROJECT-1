@@ -11,11 +11,15 @@ class KategoriController extends Controller
 {
     public function index()
     {
+    if (request('search')){
+        $all_kategori = Kategori::where('nama_kategori', 'like', '%'.request('search').'%')->paginate(5);
+        return view('admin.datakategori', ['all_kategori'=>$all_kategori]);
+    } else {
         $kategori = Kategori::all(); // Mengambil semua isi tabel
         $all_kategori = Kategori::orderBy('id', 'asc')->paginate(5);
         return view('admin.datakategori', ['kategori' => $kategori, 'all_kategori' => $all_kategori]);
- }
-
+    }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -105,15 +109,10 @@ class KategoriController extends Controller
        -> with('success', 'Data Kategori Berhasil Dihapus');   
     }
     public function search(Request $request){
-        $keyword = $request->cari;
-        $all_kategori = Kategori::with('kelas')
-            ->orWhere('nama','like','%'. $keyword . '%')
-            ->orWhereHas('kelas', function($query) {
-                $query->where('nama_kelas', 'like', '%' .request('cari'). '%');
-            })
-            ->all_kategori(3);
-            // ->withQueryString();
+        $keyword = $request -> cari;
+        $all_kategori = Kategori::where('nama_kategori','like',"%". $keyword . "%") -> paginate(5);
         return view('admin.datakategori', compact('all_kategori'));
+    // ->withQueryString();
     }
 }
 

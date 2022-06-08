@@ -7,6 +7,8 @@ use App\Models\Supplier;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+// use PDF; 
 
 class ProdukController extends Controller
 {
@@ -17,11 +19,18 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        $produk = Produk::all(); // Mengambil semua isi tabel
+    if (request('search')){
+        $all_produk = Produk::where('nama_produk', 'like', '%'.request('search').'%')
+                                ->orwhere('kategori_id', 'like', '%'.request('search').'%')
+                                ->paginate(5);
+        return view('admin.dataproduk', ['all_produk'=>$all_produk]);
+    } else {
+        $produk = Produk::with('kategori')->get(); // Mengambil semua isi tabel
         $all_produk = Produk::orderBy('id', 'asc')->paginate(5);
         return view('admin.dataproduk', ['produk' => $produk, 'all_produk' => $all_produk]);
+        
     }
-
+}
     /**
      * Show the form for creating a new resource.
      *
@@ -119,6 +128,9 @@ class ProdukController extends Controller
             'supplier_id' => 'required',
         ];
         $validatedData = $request->validate($rules);
+        if($request->file('foto_produk')){
+            $validatedData['foto_produk'] = $request->file('foto_produk')->store('images', 'public');
+        }
 
         Produk::where('id', $produk->id)
         ->update($validatedData);
@@ -141,5 +153,19 @@ class ProdukController extends Controller
         Produk::find($produk->id)->delete();
         return redirect()->route('produk.index')
             ->with('success','Produk berhasil dihapus');
-    }
+
+     }
+     public function cetak_pdf(){
+        set_time_limit(300);
+        $all_produk = Produk::paginate(5);
+        
+        // dd($user);
+    //     $pdf = PDF::loadview('admin.produk_cetakPdf',['all_produk'=>$all_produk]);
+    //     // return $pdf->stream();
+        return view ('admin.produk_cetakPdf',['all_produk'=>$all_produk]);
+    //     $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif', 'isPhpEnabled' => true, 'isRemoteEnabled' =>true
+    // ]);
+        // return $pdf->download('Laporan_DataBarang.pdf');
+
+     }
 }
