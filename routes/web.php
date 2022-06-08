@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,7 @@ Route::middleware(['auth','cekStatus:admin'])->group(function () {
     Route::resource('kategori', KategoriController::class);
     Route::resource('produk', ProdukController::class);
     Route::resource('supplier', SupplierController::class);
+    Route::resource('user', UserController::class);
 });
 
 Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard.homepage');

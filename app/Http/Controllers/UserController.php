@@ -1,0 +1,178 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Controllers\Hash;
+use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+
+class UserController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $user = User::all(); // Mengambil semua isi tabel
+        $all_user = User::orderBy('id', 'asc')->paginate(5);
+        return view('admin.datauser', ['user' => $user, 'all_user' => $all_user]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.user.createUser');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+        $this->validate($request,[
+            'username' => 'required',
+            'foto_profil' => 'nullable',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|confirmed|min:8',
+            'status' => 'required',
+            'no_hp' => 'required',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'required',
+        ]);
+
+        // $validatedData = $request->validate([
+        //     'username' => 'required',
+        //     'foto_profil' => 'nullable',
+        //     'email' => 'required|email|unique:users,email',
+        //     'password' => 'required|confirmed|min:8',
+        //     'status' => 'required',
+        //     'no_hp' => 'required',
+        //     'jenis_kelamin' => 'required',
+        //     'alamat' => 'required',
+        // ]);
+        
+        $user = new User;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->foto_profil = $request->file('foto_profil')->store('images', 'public');
+        $user->status = $request->status;
+        $user->no_hp = $request->no_hp;
+        $user->jenis_kelamin = $request->jenis_kelamin;
+        $user->alamat = $request->alamat;
+        $user->save();
+
+        // if($request->file('foto_profil')){
+        //     $validatedData['foto_profil'] = $request->file('foto_profil')->store('images', 'public');
+        // }
+
+        // User::create($validatedData);
+
+        return redirect()->route('user.index')
+        ->with('success', 'User berhasil ditambahkan');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $user = User::where('id', $id)->first();
+
+        return view('admin.user.detailUser',[
+            'user' => $user
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $user = User::where('id', $id)->first();
+         return view('admin.user.editUser', [
+            'user' => $user
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        
+        $request->validate([
+            'username' => 'required',
+            'email' => 'required',
+            'password' => 'required|confirmed|min:8',
+            'status' => 'required',
+            'no_hp' => 'required',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'required',
+        ]);
+
+        $user = User::findOrFail($id);
+        if ($request->hasFile('foto_profil')) {
+            if ($user->foto && file_exists(storage_path('app/public/'.$user->foto_profil))) {
+                Storage::delete('public/'.$user->foto_profil);
+            }
+            $image_name = $request->file('foto_profil')->store('images','public');
+            $user->foto_profil = $image_name;
+        }
+        
+        $user -> username = $request->username;
+        if (!$request->password && !$request->password_confirmation) {
+            // dd('ini ga ganti');
+        } else {
+            $user->password = bcrypt($request->password);
+        }
+        $user -> email = $request->email;
+        $user -> status = $request->status;
+        $user -> no_hp = $request->no_hp;
+        $user -> jenis_kelamin = $request->jenis_kelamin;
+        $user -> alamat = $request->alamat;
+        $user -> save();
+
+        return redirect()->route('user.index')
+        ->with('success', 'User berhasil diperbarui');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(User $user)
+    {
+        if (File::exists('storage/'.$user->foto_profil)) {
+            File::delete('storage/'.$user->foto_profil);
+        }
+
+        User::find($user->id)->delete();
+        return redirect()->route('user.index')
+            ->with('success','User berhasil dihapus');
+    }
+}

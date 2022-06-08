@@ -71,9 +71,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
+                <a href="{{ route('user.index') }}" class="nav-link" {{ ($title === "Data User") ? 'active' : ''}}>
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data Customer</p>
+                  <p> Data User</p>
                 </a>
               </li>
             </ul>

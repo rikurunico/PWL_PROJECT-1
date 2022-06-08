@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Supplier;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class SupplierController extends Controller
 {
@@ -50,7 +52,7 @@ class SupplierController extends Controller
         Supplier::create($validatedData);
 
         return redirect()->route('supplier.index')
-        ->with('success', 'Produk berhasil ditambahkan');
+        ->with('success', 'Supplier berhasil ditambahkan');
     }
 
     /**
@@ -103,7 +105,7 @@ class SupplierController extends Controller
         ->update($validatedData);
 
         return redirect()->route('supplier.index')
-        ->with('success', 'Produk berhasil diperbarui');
+        ->with('success', 'Supplier berhasil diperbarui');
     }
 
     /**
@@ -120,6 +122,6 @@ class SupplierController extends Controller
 
         Supplier::find($supplier->id)->delete();
         return redirect()->route('supplier.index')
-            ->with('success','Produk berhasil dihapus');
+            ->with('success','Supplier berhasil dihapus');
     }
 }
