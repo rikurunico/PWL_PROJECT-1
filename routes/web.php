@@ -45,7 +45,7 @@ Route::middleware(['auth','cekStatus:admin'])->group(function () {
     Route::resource('supplier', SupplierController::class);
     Route::resource('user', UserController::class);
 });
-
+Route::get('/produk/cetak_pdf', [ProdukController::class, 'cetak_pdf'])->name('cetak_pdf');
 Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard.homepage');
 
 Route::middleware(['auth','cekStatus:customer'])->group(function () {
