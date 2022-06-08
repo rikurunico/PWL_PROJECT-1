@@ -10,10 +10,30 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Data Kategori</h3>
-                <div class="float-right my-2">
-                  <a class="btn btn-success" href="{{ route('kategori.create') }}"> Input Kategori</a>
-                  </div>
-              </div>
+                @if(Session::has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  {{ Session::get('success') }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+               @endif
+               <form action="{{ route('kategori.index') }}" class="mt-4" method="get">
+                @csrf
+                <div class="row flex-row">
+                    <div class="col-md-4">
+                        <div class="input-group">    
+                            <input type="text" name="search" class="form-control" placeholder="Cari Nama Kategori" aria-label="search" aria-describedby="basic-addon1">
+                            <div class="input-group-append">
+                                <input type="submit" value="Cari" class="btn btn-secondary" id="search">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="float-right my-2">
+                            <a class="btn btn-success" href="{{ route('kategori.create') }}"> Input Kategori</a>
+                        </div>
+                    </div>                     
+                </div>
+            </form>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="table-responsive" class="table table-bordered table-hover">
@@ -32,7 +52,7 @@
                    <td>{{($kategori->nama_kategori)}}</td>
                    <td>{{($kategori->keterangan)}}</td>
                    <td width="300px">
-                   <form action="{{ route('kategori.destroy',$kategori->id) }}" method="POST"> 
+                    <form action="{{ route('kategori.destroy',$kategori->id) }}" method="POST" onsubmit="return confirm('Hapus data?')">  
                       <a class="btn btn-info" href="{{ route('kategori.show',$kategori->id) }}">Show</a>
                       <a class="btn btn-primary" href="{{ route('kategori.edit',$kategori->id) }}">Edit</a>
                       @csrf
