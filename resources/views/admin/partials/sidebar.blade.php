@@ -88,9 +88,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link {{ ($title === "Data Transaksional") ? 'active' : ''}}">
+                <a href="{{ route('order.index') }}" class="nav-link {{ ($title === "Data Order") ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data Penjualan</p>
+                  <p>Data Order</p>
                 </a>
               </li>
               <li class="nav-item">
