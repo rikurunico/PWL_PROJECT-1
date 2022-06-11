@@ -15,9 +15,23 @@
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
               @endif
-              <div class="float-right my-2">
-                <a class="btn btn-success" href="{{ route('supplier.create') }}"> Input Supplier</a>
-              </div>
+              <form action="{{ route('supplier.index') }}" class="mt-4" method="get">
+                @csrf
+                <div class="row flex-row">
+                    <div class="col-md-4">
+                        <div class="input-group">    
+                            <input type="text" name="search" class="form-control" placeholder="Cari Supplier" aria-label="search" aria-describedby="basic-addon1">
+                            <div class="input-group-append">
+                                <input type="submit" value="Cari" class="btn btn-secondary" id="search">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="float-right my-2">
+                          <a class="btn btn-success" href="{{ route('supplier.create') }}"> Input Supplier</a>
+                      </div>
+                    </div>
+              </form>
             </div>
             <!-- /.card-header -->
             <div class="card-body">

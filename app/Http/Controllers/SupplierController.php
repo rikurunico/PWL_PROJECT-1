@@ -16,9 +16,16 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $supplier = Supplier::all(); // Mengambil semua isi tabel
-        $all_supplier = Supplier::orderBy('id', 'asc')->paginate(5);
-        return view('admin.datasupplier', ['supplier' => $supplier, 'all_supplier' => $all_supplier]);
+        if (request('search')){
+            $all_supplier = Supplier::where('nama_supplier', 'like', '%'.request('search').'%')
+                                    ->orwhere('id', 'like', '%'.request('search').'%')
+                                    ->paginate(5);
+            return view('admin.datasupplier', ['all_supplier'=>$all_supplier]);
+        } else {
+            $supplier = Supplier::all(); // Mengambil semua isi tabel
+            $all_supplier = Supplier::orderBy('id', 'asc')->paginate(5);
+            return view('admin.datasupplier', ['supplier' => $supplier, 'all_supplier' => $all_supplier]);
+        }
     }
 
     /**

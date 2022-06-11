@@ -15,10 +15,23 @@
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
               @endif
-              <div class="float-right my-2">
-                <a class="btn btn-success" href="{{ route('user.create') }}"> Input User</a>
-              </div>
-            </div>
+              <form action="{{ route('user.index') }}" class="mt-4" method="get">
+                @csrf
+                <div class="row flex-row">
+                    <div class="col-md-4">
+                        <div class="input-group">    
+                            <input type="text" name="search" class="form-control" placeholder="Cari User" aria-label="search" aria-describedby="basic-addon1">
+                            <div class="input-group-append">
+                                <input type="submit" value="Cari" class="btn btn-secondary" id="search">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="float-right my-2">
+                          <a class="btn btn-success" href="{{ route('user.create') }}"> Input User</a>
+                      </div>
+                    </div>
+              </form>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="table-responsive" class="table table-bordered table-hover">

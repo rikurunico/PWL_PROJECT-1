@@ -17,9 +17,21 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all(); // Mengambil semua isi tabel
-        $all_user = User::orderBy('id', 'asc')->paginate(5);
-        return view('admin.datauser', ['user' => $user, 'all_user' => $all_user]);
+        if (request('search')){
+            $all_user = User::where('id', 'like', '%'.request('search').'%')
+                                    ->orwhere('username', 'like', '%'.request('search').'%')
+                                    ->orwhere('email', 'like', '%'.request('search').'%')
+                                    ->orwhere('status', 'like', '%'.request('search').'%')
+                                    ->orwhere('no_hp', 'like', '%'.request('search').'%')
+                                    ->orwhere('jenis_kelamin', 'like', '%'.request('search').'%')
+                                    ->orwhere('alamat', 'like', '%'.request('search').'%')
+                                    ->paginate(5);
+            return view('admin.datauser', ['all_user'=>$all_user]);
+        } else {
+            $user = User::all(); // Mengambil semua isi tabel
+            $all_user = User::orderBy('id', 'asc')->paginate(5);
+            return view('admin.datauser', ['user' => $user, 'all_user' => $all_user]);
+        }
     }
 
     /**
