@@ -9,6 +9,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,7 @@ Route::middleware(['auth','cekStatus:admin'])->group(function () {
     Route::resource('supplier', SupplierController::class);
     Route::resource('user', UserController::class);
     Route::resource('order', OrderController::class);
+    Route::resource('orderDetail', OrderDetailController::class);
 });
 Route::get('/produk/cetak_pdf', [ProdukController::class, 'cetak_pdf'])->name('cetak_pdf');
 Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard.homepage');

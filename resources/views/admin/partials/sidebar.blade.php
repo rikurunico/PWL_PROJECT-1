@@ -94,9 +94,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('orderDetail.index') }}" class="nav-link {{ ($title === "Data Order Detail") ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p> Data Pengembalian</p>
+                  <p> Data Order Detail</p>
                 </a>
               </li>
             </ul>
