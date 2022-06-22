@@ -52,7 +52,7 @@
                    <td>{{($kategori->nama_kategori)}}</td>
                    <td>{{($kategori->keterangan)}}</td>
                    <td width="300px">
-                    <form action="{{ route('kategori.destroy',$kategori->id) }}" method="POST" onsubmit="return confirm('Hapus data?')">  
+                    <form action="{{ route('kategori.destroy',$kategori->id) }}" method="POST" onsubmit="return confirm('Apakah anda yakin menghapus data?')">  
                       <a class="btn btn-info" href="{{ route('kategori.show',$kategori->id) }}">Show</a>
                       <a class="btn btn-primary" href="{{ route('kategori.edit',$kategori->id) }}">Edit</a>
                       @csrf

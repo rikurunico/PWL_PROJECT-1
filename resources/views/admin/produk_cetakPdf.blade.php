@@ -13,7 +13,6 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Nama Produk</th>
-            <th scope="col">Foto Produk</th>
             <th scope="col">Harga</th>
             <th scope="col">Stok</th>
             <th scope="col">Diskon</th>
@@ -29,7 +28,6 @@
                 {{-- <td>{{$loop->iteration}}</td> --}}
                 <td>{{($produk->id)}}</td>
                 <td>{{($produk->nama_produk)}}</td>
-                <td><img width="90px" src="{{ asset('/storage/'.$produk->foto_produk)}}"></td>
                 <td>Rp{{number_format($produk->harga,2,',','.')}}</td>
                 <td>{{($produk->stok)}}</td>
                 <td>{{($produk->diskon)}}</td>

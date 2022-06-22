@@ -35,7 +35,6 @@
                       <div class="col-md-12">
                           <div class="float-right my-2">
                               <a href="{{route('cetak_pdf')}}"><i class="fa fa-file-pdf-o" style="font-size:30px;color: #9DD6DF"></i></a>  
-                     
                           </div>
                       </div>
                 </div>
@@ -72,7 +71,7 @@
                  <td>{{($produk->kategori->nama_kategori)}}</td>
                  <td>{{($produk->supplier->nama_supplier)}}</td>
                  <td width="200px">
-                 <form action="{{ route('produk.destroy',$produk->id) }}" method="POST" onsubmit="return confirm('Hapus data?')"> 
+                 <form action="{{ route('produk.destroy',$produk->id) }}" method="POST" onsubmit="return confirm('Apakah anda yakin menghapus data?')"> 
                   <a href="{{ route('produk.show',$produk->id)}}"><i class="fa fa-eye" style="font-size:30px;color: #9DD6DF"></i></a>  
                   
                   {{-- <a class="btn btn-info" href="{{ route('produk.show',$produk->id) }}">Show</a> --}}

@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="height: 100vh">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a href="{{ route('homePageAdmin') }}" class="brand-link">
       <img src="{{ asset('storage/images/logo.png') }}" alt="Diza Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Diza Shop</span>
     </a>
@@ -13,7 +13,7 @@
           <img src="/storage/{{ auth()->user()->foto_profil }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ auth()->user()->username }}</a>
+          <a href="{{url('/admin/profil')}}" class="d-block">{{ auth()->user()->username }}</a>
         </div>
       </div>
 

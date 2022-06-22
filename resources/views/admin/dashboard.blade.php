@@ -1,4 +1,4 @@
-@extends('admin.partials.content', ['title' => 'Dashboar Admin'])
+@extends('admin.partials.content', ['title' => 'Dashboard Admin'])
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">

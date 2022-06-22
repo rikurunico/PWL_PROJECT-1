@@ -62,7 +62,7 @@
                  <td>{{($user->jenis_kelamin)}}</td>
                  <td>{{($user->alamat)}}</td>
                  <td width="250px">
-                 <form action="{{ route('user.destroy',$user->id) }}" method="POST" onsubmit="return confirm('Yakin maw hapusss?? zzzzz ripah')"> 
+                 <form action="{{ route('user.destroy',$user->id) }}" method="POST" onsubmit="return confirm('Apakah anda yakin menghapus data?')"> 
                     <a class="btn btn-info" href="{{ route('user.show',$user->id) }}">Show</a>
                     <a class="btn btn-primary" href="{{ route('user.edit',$user->id) }}">Edit</a>
                     @csrf

@@ -53,7 +53,7 @@
                  <td>{{($supplier->deskripsi)}}</td>
                  <td><img width="90px" src="/storage/{{$supplier->gambar}}"></td>
                  <td width="250px">
-                 <form action="{{ route('supplier.destroy',$supplier->id) }}" method="POST" onsubmit="return confirm('Yakin maw hapusss?? zzzzz ripah')"> 
+                 <form action="{{ route('supplier.destroy',$supplier->id) }}" method="POST" onsubmit="return confirm('Apakah anda yakin menghapus data?')"> 
                     <a class="btn btn-info" href="{{ route('supplier.show',$supplier->id) }}">Show</a>
                     <a class="btn btn-primary" href="{{ route('supplier.edit',$supplier->id) }}">Edit</a>
                     @csrf

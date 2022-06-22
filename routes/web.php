@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerPageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,8 @@ Route::middleware(['auth','cekStatus:admin'])->group(function () {
     Route::resource('user', UserController::class);
     Route::resource('order', OrderController::class);
     Route::resource('orderDetail', OrderDetailController::class);
+    Route::get('/admin/profil', [UserController::class, 'profil'])->name('profiladmin');
+    Route::put('/admin/profil/{id}', [UserController::class, 'updateprofil']);
 });
 Route::get('/produk/cetak_pdf', [ProdukController::class, 'cetak_pdf'])->name('cetak_pdf');
 
