@@ -9,19 +9,21 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    
-    public function index(){
-
-        $customer = User::where('status', 'customer')->count();
-        $supplier = Supplier::all()->count();
+    public function index()
+    {
+        $user = User::all()->count();
         $kategori = Kategori::all()->count();
         $produk = Produk::all()->count();
+        $supplier = Supplier::all()->count();
 
-        return view('dashboard.homepage',[
-            'customer' => $customer,
-            'supplier' => $supplier,
-            'kategori' => $kategori,
-            'produk' => $produk
-        ]);
-}
+        return view(
+            'admin.dashboard',
+            [
+                'user' => $user,
+                'kategori' => $kategori,
+                'produk' => $produk,
+                'supplier' => $supplier,
+            ]
+        );
+    }
 }

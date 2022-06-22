@@ -1,60 +1,111 @@
-@extends('admin.partials.content' , ['title' => 'Dashboard'])
-
-{{-- @section('content')
-<div class="container-fluid">
-
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-    </div>
-
-    <!-- Content Row -->
+@extends('admin.partials.content', ['title' => 'Dashboar Admin'])
+@section('content')
+<div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
-        <div class="col-lg-6 col-6">
-            <div class="card text-white bg-primary mb-3" style="border-radius: 0.5rem;">
-            <div class="card-body" style="padding: 2rem 0 0 0;">
-                <div class="text-center">
-                    <i class="fas fa-2x fa-list-alt mb-2" id="cardIcon"></i>
-                </div>
-                <h5 class="card-text text-center">Total Supplier</h5>
-                    <p class="text-center"><b>{{ $supplier }}</b></p>
-                </div>
+      <div class="col-lg-2 col-md-12 col-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title d-flex align-items-start justify-content-between">
+              <div class="avatar flex-shrink-0">
+                <a href="{{ route('user.index') }}"><i class="fa fa-id-card" style="font-size:48px;color: #9DD6DF"></i></a>
+              </div>
+  
             </div>
+            <span class="fw-semibold d-block mb-1">Pengguna</span>
+            <span>
+              <h3 class="card-title mb-2 d-inline pr-3">{{ $user}}</h3>
+              <p class="d-inline">User</p>
+            </span>
+          </div>
         </div>
-        <div class="col-lg-6 col-6">
-            <div class="card text-white bg-info mb-3" style="border-radius: 0.5rem;">
-            <div class="card-body" style="padding: 2rem 0 0 0;">
-                <div class="text-center">
-                    <i class="fa fa-2x fa-users mb-2" id="cardIcon"></i>
-                </div>
-                <h5 class="card-text text-center">Total Kategori</h5>
-                    <p class="text-center"><b>{{ $kategori }}</b></p>
-                </div>
+      </div>
+      <div class="col-lg-2 col-md-12 col-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title d-flex align-items-start justify-content-between">
+              <div class="avatar flex-shrink-0">
+                <a href="{{ route('kategori.index') }}"><i class="fa fa-list-alt" style="font-size:48px;color: #9DD6DF"></i></a>
+              </div>
+  
             </div>
+            <span class="fw-semibold d-block mb-1">Kategori</span>
+            <span>
+              <h3 class="card-title mb-2 d-inline pr-3">{{ $kategori}}</h3>
+              <p class="d-inline">Jenis</p>
+            </span>
+  
+          </div>
         </div>
-        <div class="col-lg-6 col-6">
-            <div class="card text-white bg-danger mb-3" style="border-radius: 0.5rem;">
-            <div class="card-body" style="padding: 2rem 0 0 0;">
-                <div class="text-center">
-                    <i class="fa fa-2x fa-user mb-2" id="cardIcon"></i>
-                </div>
-                <h5 class="card-text text-center">Total Produk</h5>
-                    <p class="text-center"><b>{{ $produk }}</b></p>
-                </div>
+      </div>
+      <div class="col-lg-2 col-md-12 col-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title d-flex align-items-start justify-content-between">
+              <div class="avatar flex-shrink-0">
+                <a href="{{ route('produk.index') }}"><i class="fa fa-gift" style="font-size:48px;color: #9DD6DF"></i></a>
+              </div>
+  
             </div>
+            <span class="fw-semibold d-block mb-1">Produk</span>
+            <span>
+              <h3 class="card-title mb-2 d-inline pr-3">{{ $produk }}</h3>
+              <p class="d-inline">Buah</p>
+            </span>
+  
+          </div>
         </div>
-        <div class="col-lg-6 col-6">
-            <div class="card text-white bg-success mb-3" style="border-radius: 0.5rem;">
-            <div class="card-body" style="padding: 2rem 0 0 0;">
-                <div class="text-center">
-                    <i class="fas fa-2x fa-prescription-bottle-alt mb-2" id="cardIcon"></i>
-                </div>
-                <h5 class="card-text text-center">Total User</h5>
-                    <p class="text-center"><b>{{ $customer }}</b></p>
-                </div>
+      </div>
+      <div class="col-lg-2 col-md-12 col-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title d-flex align-items-start justify-content-between">
+              <div class="avatar flex-shrink-0">
+                <a href="{{ route('supplier.index') }}"><i class="fa fa-shopping-bag" style="font-size:45px;color: #9DD6DF"></i></a>
+              </div>
+  
             </div>
+            <span class="fw-semibold d-block mb-1">Supplier</span>
+            <span>
+              <h3 class="card-title mb-2 d-inline pr-3">{{ $supplier }}</h3>
+              <p class="d-inline">Supplier</p>
+            </span>
+  
+          </div>
         </div>
-  </div>
+      </div>
+    <div class="row">
+      <div class="col-lg-8 mb-4 order-0">
+        <div class="card mb-4">
+          <div class="d-flex align-items-end row">
+            <div class="col-sm-12">
+              <div class="card-body">
+                <h3 class="card-title text-primary">Halo, {{ ucwords(auth()-> user() -> username) }}! 🎉</h3><br>
+                <p class="mb-4">
+                  Bagaimana kabarmu hari ini? Tetap jaga kesehatan dan patuhi protokol kesehatan! semoga harimu
+                  menyenangkan😄
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="d-flex align-items-end row">
+            <div class="col-sm-12">
+              <div class="card-body">
+                <h3 class="card-title text-primary">Selamat Datang di Diza Shop!</h3><br>
+                <p class="mb-3">
+                  <strong>DZ or Dina Zalfa </strong>Fashion eCommerce is a complete eCommerce that provides quality clothes from world-famous brands with up-to-date fashion models.
+                  Sell clothes for all genders with all types of clothes. The goods sold in the DZ eCommerce are directly from the brand supplier itself. So, the goods 
+                  are guaranteed original and exclusive.
+                </p>
+              </div>
+            </div>
+   
+            </div>
+          </div>
+        </div>
+      </div>
 
-</div>
-@endsection --}}
+    </div>
+  </div>
+@endsection
