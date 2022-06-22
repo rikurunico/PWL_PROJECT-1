@@ -66,7 +66,7 @@
             </tbody>
             </table>
             <div class="d-flex justify-content-center">
-              {{ $all_supplier->links()}}
+              {{ $all_supplier->withQueryString()->links() }}
             </div>
             </div>
             <!-- /.card-body -->

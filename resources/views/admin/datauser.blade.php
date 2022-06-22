@@ -75,7 +75,7 @@
             </tbody>
             </table>
             <div class="d-flex justify-content-center">
-              {{ $all_user->links()}}
+              {{ $all_user->withQueryString()->links() }}
             </div>
             </div>
             <!-- /.card-body -->

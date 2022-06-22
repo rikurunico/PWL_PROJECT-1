@@ -10,7 +10,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/storage/{{ asset(auth()->user()->foto_profil) }}" class="img-circle elevation-2" alt="User Image">
+          <img src="/storage/{{ auth()->user()->foto_profil }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ auth()->user()->username }}</a>
@@ -59,19 +59,19 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('kategori.index') }}" class="nav-link" {{ ($title === "Data Kategori") ? 'active' : ''}}>
+                <a href="{{ route('kategori.index') }}" class="nav-link {{ ($title === "Data Kategori") ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p> Data Kategori</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('supplier.index') }}" class="nav-link" {{ ($title === "Data Supplier") ? 'active' : ''}}>
+                <a href="{{ route('supplier.index') }}" class="nav-link {{ ($title === "Data Supplier") ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p> Data Supplier</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('user.index') }}" class="nav-link" {{ ($title === "Data User") ? 'active' : ''}}>
+                <a href="{{ route('user.index') }}" class="nav-link {{ ($title === "Data User") ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p> Data User</p>
                 </a>

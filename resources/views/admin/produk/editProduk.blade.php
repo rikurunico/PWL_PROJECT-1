@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label for="foto_produk">Foto Produk</label>
                     <input type="file" class="form-control @error('foto_produk') is-invalid @enderror" name="foto_produk" value="/storage/{{ $produk->foto_produk }}">
-                    <img src="/storage/{{ $produk->foto_produk }}" height="150px" width="150px">
+                    <img src="/storage/{{ $produk->foto_produk }}" width="100px">
                     @error('foto_produk')
                     <div class="invalid-feedback">
                         {{ $message }}

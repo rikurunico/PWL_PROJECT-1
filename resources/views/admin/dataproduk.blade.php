@@ -31,16 +31,17 @@
                             <a class="btn btn-success" href="{{ route('produk.create') }}"> Input Produk</a>
                         </div>
                     </div>   
-            
+                    <div class="row">
+                      <div class="col-md-12">
+                          <div class="float-right my-2">
+                              <a href="{{route('cetak_pdf')}}"><i class="fa fa-file-pdf-o" style="font-size:30px;color: #9DD6DF"></i></a>  
+                     
+                          </div>
+                      </div>
+                </div>
                 </div>
             </form>
-            <div class="row">
-                  <div class="col-md-12">
-                      <div class="float-right my-2">
-                          <a class="btn btn-success" href="{{route('cetak_pdf')}}"> Cetak </a>
-                      </div>
-                  </div>
-            </div>
+           
             <!-- /.card-header -->
             <div class="card-body">
               <table id="table-responsive" class="table table-bordered table-hover">
@@ -70,13 +71,18 @@
                  <td>{{ substr($produk->deskripsi, 0, 50) }}...</td>
                  <td>{{($produk->kategori->nama_kategori)}}</td>
                  <td>{{($produk->supplier->nama_supplier)}}</td>
-                 <td width="250px">
+                 <td width="200px">
                  <form action="{{ route('produk.destroy',$produk->id) }}" method="POST" onsubmit="return confirm('Hapus data?')"> 
-                    <a class="btn btn-info" href="{{ route('produk.show',$produk->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('produk.edit',$produk->id) }}">Edit</a>
+                  <a href="{{ route('produk.show',$produk->id)}}"><i class="fa fa-eye" style="font-size:30px;color: #9DD6DF"></i></a>  
+                  
+                  {{-- <a class="btn btn-info" href="{{ route('produk.show',$produk->id) }}">Show</a> --}}
+                  <a href="{{ route('produk.edit',$produk->id)}}"><i class="fa fa-pencil-square-o" style="font-size:30px;color: #9DD6DF"></i></a>  
+                 
+                    {{-- <a class="btn btn-primary" href="{{ route('produk.edit',$produk->id) }}">Edit</a> --}}
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button class="fa fa-trash" style="font-size:30px;color: #9DD6DF"></button>  
+                    {{-- <button type="submit" class="btn btn-danger">Delete</button> --}}
                 </form>
                 </td>
                 </tr>
@@ -84,7 +90,7 @@
             </tbody>
             </table>
             <div class="d-flex justify-content-center">
-              {{ $all_produk->links()}}
+              {{ $all_produk->withQueryString()->links() }}
             </div>
             </div>
             <!-- /.card-body -->

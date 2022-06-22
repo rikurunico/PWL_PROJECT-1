@@ -12,7 +12,7 @@
                 <li class="list-group-item"><b>Nama Produk: </b>{{$produk->nama_produk}}</li>
             </div>
             <div class="form-group">
-                <li class="list-group-item"><b>Foto Produk: </b><img src="/storage/{{ $produk->foto_produk }}" height="150px" width="150px"></li>
+                <li class="list-group-item"><b>Foto Produk: </b><img src="/storage/{{ $produk->foto_produk }}" width="100px"></li>
             </div>
             <div class="form-group">
                 <li class="list-group-item"><b>Harga: </b>Rp{{number_format($produk->harga,2,',','.')}}</li>
