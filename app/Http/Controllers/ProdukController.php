@@ -21,8 +21,10 @@ class ProdukController extends Controller
     {
     if (request('search')){
         $all_produk = Produk::where('nama_produk', 'like', '%'.request('search').'%')
-                                ->orwhere('kategori_id', 'like', '%'.request('search').'%')
-                                ->paginate(5);
+                                ->orWhere('kategori_id', 'like', '%'.request('search').'%')
+                                ->paginate(
+                                    $perPage = 5, $columns = ['*'], $pageName = 'produk'
+                                );
         return view('admin.dataproduk', ['all_produk'=>$all_produk]);
     } else {
         $produk = Produk::with('kategori')->get(); // Mengambil semua isi tabel

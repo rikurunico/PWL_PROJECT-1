@@ -38,10 +38,7 @@ Route::post('/postlogin', [LoginController::class, 'login']) -> name('login');
 Route::post('/postregister', [RegisterController::class, 'store']) -> name('register');
 
 Route::middleware(['auth','cekStatus:admin'])->group(function () {
-    Route::get('/homeAdmin', function () {
-        return view('admin.dashboard',
-            ['tittle' => 'Admin Dashboard']); 
-    }) -> name('homePageAdmin');
+    Route::get('/homeAdmin', [DashboardController::class, 'index']) -> name('homePageAdmin');
     Route::resource('kategori', KategoriController::class);
     Route::resource('produk', ProdukController::class);
     Route::resource('supplier', SupplierController::class);
@@ -50,12 +47,16 @@ Route::middleware(['auth','cekStatus:admin'])->group(function () {
     Route::resource('orderDetail', OrderDetailController::class);
 });
 Route::get('/produk/cetak_pdf', [ProdukController::class, 'cetak_pdf'])->name('cetak_pdf');
-Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard.homepage');
 
 Route::middleware(['auth','cekStatus:customer'])->group(function () {
-    // Route::get('/home', [HomePageController::class, 'index']) -> name('HomePage');
-    Route::get('/home', function () {
-        return view('customer.dashboard',
-            ['tittle' => 'Customer Dashboard']); 
-    }) -> name('homePageCustomer');
+    Route::get('/homecust', function () {
+        return view('customerpage.home'); 
+    })->name('homePageCustomer');
 });
+
+Route::get('/customer/produk/{keyword}',[CustomerPageController::class, 'produk'])->name('LD');
+Route::get('/customer/supplier', [CustomerPageController::class, 'supplier']);
+Route::get('/customer/profil', [CustomerPageController::class, 'profil'])->name('profile');
+Route::put('/customer/profil/{id}', [CustomerPageController::class, 'update']);
+Route::view('/customer/about', 'customerpage.about');
+
