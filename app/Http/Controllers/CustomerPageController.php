@@ -49,7 +49,7 @@ class CustomerPageController extends Controller
     public function profil()
     {
         return view('customerpage.profil', [
-            'title' => 'Dz Fashion - Profil',
+            'title' => 'Dz Fashion - Profil Customer',
             'user' => Auth::user(),
         ]);
     }

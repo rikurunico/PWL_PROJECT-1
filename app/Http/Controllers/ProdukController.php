@@ -157,14 +157,12 @@ class ProdukController extends Controller
             ->with('success','Produk berhasil dihapus');
 
      }
+     
      public function cetak_pdf(){
-        set_time_limit(300);
         $all_produk = Produk::paginate(5);
-        
-        // dd($user);
-    //     $pdf = PDF::loadview('admin.produk_cetakPdf',['all_produk'=>$all_produk]);
-    //     // return $pdf->stream();
-        return view ('admin.produk_cetakPdf',['all_produk'=>$all_produk]);
+        $pdf = PDF::loadview('admin.produk_cetakPdf',['all_produk'=>$all_produk]);
+        return $pdf->stream();
+        // return view ('admin.produk_cetakPdf',['all_produk'=>$all_produk]);
     //     $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif', 'isPhpEnabled' => true, 'isRemoteEnabled' =>true
     // ]);
         // return $pdf->download('Laporan_DataBarang.pdf');
