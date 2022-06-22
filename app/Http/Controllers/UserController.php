@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -186,5 +187,41 @@ class UserController extends Controller
         User::find($user->id)->delete();
         return redirect()->route('user.index')
             ->with('success','User berhasil dihapus');
+    }
+
+    public function profil()
+    {
+        return view('admin.profilAdmin', [
+            'title' => 'Dz Fashion - Profil Admin',
+            'user' => Auth::user(),
+        ]);
+    }
+
+    public function updateprofil(Request $request, $id)
+    {
+        $validateData = $request->validate([
+            'username' => 'required',
+            'email' => 'required',
+            'no_hp' => 'required',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'required',
+            'foto_profil' => 'image|file',
+        ]);
+
+        // dd($validateData);
+        $user = User::findOrFail($id);
+        // dd($request->foto_profil);
+        if ($request->hasFile('foto_profil')) {
+            if ($user->foto && file_exists(storage_path('app/public/storage/'.$user->foto_profil))) {
+                Storage::delete('public/'.$user->foto_profil);
+            }
+            $image_name = $request->file('foto_profil')->store('images','public');
+            $user->foto_profil = $image_name;
+            $validateData['foto_profil'] = $image_name;
+        }
+        User::where('id', $id)
+            ->update($validateData);
+            
+        return redirect()->route('profiladmin')->with('success', 'Profil telah diupdate!');
     }
 }
