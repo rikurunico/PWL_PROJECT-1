@@ -15,7 +15,7 @@
                             <li class="scroll-to-section"><a href="{{url('/customer/produk/ld')}}" class="{{ ($title == 'Dz Fashion - Produk' )? 'active' : '' }}">Produk</a></li>
                             <li class="scroll-to-section"><a href="{{url('/customer/supplier')}}" class="{{ ($title == 'Dz Fashion - Supplier' )? 'active' : '' }}">Supplier</a></li>
                             <li class="scroll-to-section"><a href="{{url('/customer/about')}}" class="{{ ($title == 'Dz Fashion - About' )? 'active' : ''}}">About</a></li> 
-                            <li class="scroll-to-section"><a href="{{url('/customer/profil')}}" class="{{ ($title == 'Dz Fashion - Profil' )? 'active' : ''}}">Hello, {{ Auth::user() -> username }}</a></li> 
+                            <li class="scroll-to-section"><a href="{{url('/customer/profil')}}" class="{{ ($title == 'Dz Fashion - Profil Customer' )? 'active' : ''}}">Hello, {{ Auth::user() -> username }}</a></li> 
                             <li class="scroll-to-section"><a href="{{ route('logout') }}" class="{{ ($title == 'Dz Fashion - Logout' )? 'active' : ''}}">Logout</a></li> 
                             {{-- <li><a href="">Hello, {{ Auth::user() -> username }}</a>
                                 <ul id="tes" style="width: 100%;padding: 5px" class="sub-menu text-end">
