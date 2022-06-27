@@ -63,11 +63,12 @@
                  <td>{{($user->alamat)}}</td>
                  <td width="250px">
                  <form action="{{ route('user.destroy',$user->id) }}" method="POST" onsubmit="return confirm('Apakah anda yakin menghapus data?')"> 
-                    <a class="btn btn-info" href="{{ route('user.show',$user->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('user.edit',$user->id) }}">Edit</a>
+                    <a href="{{ route('user.show',$user->id)}}" class="btn btn-info"><i class="fa fa-eye"></i></a>  
+                    <a href="{{ route('user.edit',$user->id)}}" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></a>  
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger" ><i
+                      class="fa fa-trash"></i></button>
                 </form>
                 </td>
                 </tr>

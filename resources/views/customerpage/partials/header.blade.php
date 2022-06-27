@@ -10,24 +10,21 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                           
                             <li class="scroll-to-section"><a href="{{ route('homePageCustomer') }}" class="{{ ($title == 'Dz Fashion - Homepage' )? 'active' : '' }}">Home</a></li>
                             <li class="scroll-to-section"><a href="{{url('/customer/produk/ld')}}" class="{{ ($title == 'Dz Fashion - Produk' )? 'active' : '' }}">Produk</a></li>
                             <li class="scroll-to-section"><a href="{{url('/customer/supplier')}}" class="{{ ($title == 'Dz Fashion - Supplier' )? 'active' : '' }}">Supplier</a></li>
                             <li class="scroll-to-section"><a href="{{url('/customer/about')}}" class="{{ ($title == 'Dz Fashion - About' )? 'active' : ''}}">About</a></li> 
                             <li class="scroll-to-section"><a href="{{url('/customer/profil')}}" class="{{ ($title == 'Dz Fashion - Profil Customer' )? 'active' : ''}}">Hello, {{ Auth::user() -> username }}</a></li> 
+                            <a href="{{ route('cart.index') }}" >
+                            <button class="btn btn-light text-black position-relative">
+                                <i class="fas fa-shopping-cart fa-sm" ></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {{ $all_cart->count() }}
+                                </span>
+                            </button>
+                            </a>
                             <li class="scroll-to-section"><a href="{{ route('logout') }}" class="{{ ($title == 'Dz Fashion - Logout' )? 'active' : ''}}">Logout</a></li> 
-                            {{-- <li><a href="">Hello, {{ Auth::user() -> username }}</a>
-                                <ul id="tes" style="width: 100%;padding: 5px" class="sub-menu text-end">
-                            </li>
-                            @if (Auth::user() -> status == 'admin')
-                            <li style="height: 40px;overflow: hidden;"><a class="dropdown-item" href="/dashboard"
-                                    style="height: 40px;">Dashboard
-                                    <i class="fa-solid fa-house-chimney-user justify-content-end d-flex"
-                                        style="transform: translateY(-20px)"></i></a></li>
-                            @endif
                             
-                             --}}
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

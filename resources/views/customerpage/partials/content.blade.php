@@ -20,6 +20,8 @@ https://templatemo.com/tm-558-klassy-cafe
 
 -->
     <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous">
+    
     <link rel="stylesheet" type="text/css" href="{{asset('frontend/asset/css/bootstrap.min.css')}}">
 
     <link rel="stylesheet" type="text/css" href="{{asset('frontend/asset/css/font-awesome.css')}}">
@@ -29,6 +31,11 @@ https://templatemo.com/tm-558-klassy-cafe
     <link rel="stylesheet" href="{{asset('frontend/asset/css/owl-carousel.css')}}">
 
     <link rel="stylesheet" href="{{asset('frontend/asset/css/lightbox.css')}}">
+
+    <link rel="stylesheet" href="{{asset('frontend/asset/css/main.css')}}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script src="vendor/sweetalert/sweetalert.all.js"></script>
    
     </head>
     <body>
@@ -75,7 +82,7 @@ https://templatemo.com/tm-558-klassy-cafe
     <script src="{{asset('frontend/asset/js/slick.js')}}"></script> 
     <script src="{{asset('frontend/asset/js/lightbox.js')}}"></script> 
     <script src="{{asset('frontend/asset/js/isotope.js')}}"></script> 
-    
+   
     <!-- Global Init -->
     <script src="{{asset('frontend/asset/js/custom.js')}}"></script>
     <script>
@@ -96,4 +103,5 @@ https://templatemo.com/tm-558-klassy-cafe
 
     </script>
   </body>
+ 
 </html>

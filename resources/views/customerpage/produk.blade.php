@@ -12,6 +12,22 @@
                     </div>
                 </div>
             </div>
+            {{-- <form action="#" method="GET">
+                <div class="d-flex justify-content-end">
+                  <div class="input-group mb-3 col-sm-4">
+                    <input type="text" class="form-control" placeholder="Search here" name="cari" id="search">
+                    <button class="btn btn-secondary" type="submit"> <i class="fas fa-search"></i> </button>
+                  </div>
+                </div>
+              </form>  --}}
+            <div class="row d-flex justify-content-center">
+                <form action="#" method="GET">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Search here " name="query" id="search">
+                        <button class="btn btn-default" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </form>
+		    </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row" id="tabs">
@@ -58,17 +74,17 @@
 
                                         <div class="col-lg-12">
                                             <div class="tab-item">
-                                                <a href="#">
+                                                <a href="{{ route('produk.detail', $produk->id) }}">
                                                     <img src="/storage/{{ $produk->foto_produk }}" width="100px" height="150px">
-                                                <h4>{{ $produk->nama_produk }}</h4>
-                                                </a>  
+                                                <h4>{{ $produk->nama_produk }}</h4>  
                                                 <p>{{ substr($produk->deskripsi, 0, 80) }}...</p>
+                                                </a>
                                                 <div class="price">
                                                     @if ($produk->diskon > 0)
-                                                    <span class="reducedfrom">Rp. {{ $produk->harga }}</span>
-                                                    <span class="actual">Rp. {{ ($produk->harga -= ($produk->harga * $produk->diskon)) }}</span><br>
+                                                    <span class="reducedfrom">Rp. {{ number_format($produk->harga) }}</span>
+                                                    <span class="actual">Rp. {{ number_format($produk->harga -= ($produk->harga * $produk->diskon)) }}</span><br>
                                                     @else 
-                                                        <span class="actual">Rp. {{ $produk->harga }}</span><br>
+                                                        <span class="actual">Rp. {{ number_format($produk->harga) }}</span><br>
                                                     @endif
                                                 </div>
                                             </div>

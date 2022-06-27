@@ -7,3 +7,7 @@
 <link rel="stylesheet" href="{{asset('adminLTE/plugins/fontawesome-free/css/all.min.css')}}">
 <!-- Theme style -->
 <link rel="stylesheet" href="{{ asset('adminLTE/dist/css/adminlte.min.css') }}">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script src="vendor/sweetalert/sweetalert.all.js"></script>
+

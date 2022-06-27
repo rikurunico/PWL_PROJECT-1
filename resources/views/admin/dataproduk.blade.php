@@ -9,12 +9,6 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Data Produk</h3> 
-              @if(Session::has('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  {{ Session::get('success') }}
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-              @endif
               <form action="{{ route('produk.index') }}" class="mt-4" method="get">
                 @csrf
                 <div class="row flex-row">
@@ -72,17 +66,12 @@
                  <td>{{($produk->supplier->nama_supplier)}}</td>
                  <td width="200px">
                  <form action="{{ route('produk.destroy',$produk->id) }}" method="POST" onsubmit="return confirm('Apakah anda yakin menghapus data?')"> 
-                  <a href="{{ route('produk.show',$produk->id)}}"><i class="fa fa-eye" style="font-size:30px;color: #9DD6DF"></i></a>  
-                  
-                  {{-- <a class="btn btn-info" href="{{ route('produk.show',$produk->id) }}">Show</a> --}}
-                  <a href="{{ route('produk.edit',$produk->id)}}"><i class="fa fa-pencil-square-o" style="font-size:30px;color: #9DD6DF"></i></a>  
-                 
-                    {{-- <a class="btn btn-primary" href="{{ route('produk.edit',$produk->id) }}">Edit</a> --}}
+                  <a href="{{ route('produk.show',$produk->id)}}" class="btn btn-info"><i class="fa fa-eye"></i></a>  
+                  <a href="{{ route('produk.edit',$produk->id)}}" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></a>  
                     @csrf
                     @method('DELETE')
-                    <button class="fa fa-trash" style="font-size:30px;color: #9DD6DF"></button>  
-                    {{-- <button type="submit" class="btn btn-danger">Delete</button> --}}
-                </form>
+                    <button type="submit" class="btn btn-danger delete" data-id={{ $produk->id }}><i
+                      class="fa fa-trash"></i></button>
                 </td>
                 </tr>
                    @endforeach

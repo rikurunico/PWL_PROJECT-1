@@ -53,11 +53,12 @@
                    <td>{{($kategori->keterangan)}}</td>
                    <td width="300px">
                     <form action="{{ route('kategori.destroy',$kategori->id) }}" method="POST" onsubmit="return confirm('Apakah anda yakin menghapus data?')">  
-                      <a class="btn btn-info" href="{{ route('kategori.show',$kategori->id) }}">Show</a>
-                      <a class="btn btn-primary" href="{{ route('kategori.edit',$kategori->id) }}">Edit</a>
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-danger">Delete</button>
+                    <a href="{{ route('kategori.show',$kategori->id)}}" class="btn btn-info"><i class="fa fa-eye"></i></a>  
+                    <a href="{{ route('kategori.edit',$kategori->id)}}" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></a>  
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger" ><i
+                      class="fa fa-trash"></i></button>
                   </form>
                   </td>
                   </tr>

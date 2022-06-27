@@ -54,11 +54,12 @@
                  <td><img width="90px" src="/storage/{{$supplier->gambar}}"></td>
                  <td width="250px">
                  <form action="{{ route('supplier.destroy',$supplier->id) }}" method="POST" onsubmit="return confirm('Apakah anda yakin menghapus data?')"> 
-                    <a class="btn btn-info" href="{{ route('supplier.show',$supplier->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('supplier.edit',$supplier->id) }}">Edit</a>
+                    <a href="{{ route('supplier.show',$supplier->id)}}" class="btn btn-info"><i class="fa fa-eye"></i></a>  
+                    <a href="{{ route('supplier.edit',$supplier->id)}}" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i></a>  
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger" ><i
+                      class="fa fa-trash"></i></button>
                 </form>
                 </td>
                 </tr>

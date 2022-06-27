@@ -1,5 +1,17 @@
 @extends('customerpage.partials.content', ['title' => 'Dz Fashion - About'])
 @section('content')
+<div class="breadcrumb-section breadcrumb-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2 text-center">
+				<div class="breadcrumb-text">
+					<p>We sale best Fashion</p>
+					<h1>About Us</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
     <!-- ***** About Area Starts ***** -->
     <section class="section" id="about">
         <div class="container">
