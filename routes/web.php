@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CustomerPageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
+use App\Models\Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,18 +50,35 @@ Route::middleware(['auth','cekStatus:admin'])->group(function () {
     Route::resource('orderDetail', OrderDetailController::class);
     Route::get('/admin/profil', [UserController::class, 'profil'])->name('profiladmin');
     Route::put('/admin/profil/{id}', [UserController::class, 'updateprofil']);
+    Route::get('/produk/cetak_pdf', [ProdukController::class, 'cetak_pdf'])->name('cetak_pdf');
 });
-Route::get('/produk/cetak_pdf', [ProdukController::class, 'cetak_pdf'])->name('cetak_pdf');
+
 
 Route::middleware(['auth','cekStatus:customer'])->group(function () {
     Route::get('/homecust', function () {
-        return view('customerpage.home'); 
+        $all_cart = Cart::all()->where('user_id',Auth::user()->id);
+        return view('customerpage.home') 
+        ->with('all_cart', $all_cart);
     })->name('homePageCustomer');
-});
+
 
 Route::get('/customer/produk/{keyword}',[CustomerPageController::class, 'produk'])->name('LD');
+Route::get('/customer/produk/search', [CustomerPageController::class, 'search'])->name('produk.search');
 Route::get('/customer/supplier', [CustomerPageController::class, 'supplier']);
 Route::get('/customer/profil', [CustomerPageController::class, 'profil'])->name('profile');
 Route::put('/customer/profil/{id}', [CustomerPageController::class, 'update']);
-Route::view('/customer/about', 'customerpage.about');
+Route::get('/customer/detailproduk/{id}', [CustomerPageController::class, 'detail'])->name('produk.detail');
+Route::get('/customer/about', function () {
+    $all_cart = Cart::all()->where('user_id',Auth::user()->id);
+    return view('customerpage.about') 
+    ->with('all_cart', $all_cart);
+});
+
+// Cart
+Route::get('/customer/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/customer/produkcart',[CartController::class, 'addToCart'])->name('cart.addToCart');
+Route::put('/customer/cart/{cart:id}',[CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
+Route::delete('/customer/cart/{cart:id}',[CartController::class, 'destroy'])->name('cart.delete');
+});
+
 
