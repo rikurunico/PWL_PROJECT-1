@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Cart;
 use App\Models\Kategori;
 use App\Models\Produk;
 use App\Models\Supplier;
@@ -29,6 +31,7 @@ class ProdukController extends Controller
     } else {
         $produk = Produk::with('kategori')->get(); // Mengambil semua isi tabel
         $all_produk = Produk::orderBy('id', 'asc')->paginate(5);
+        $all_cart = Cart::all()->where('user_id',Auth::user()->id);
         return view('admin.dataproduk', ['produk' => $produk, 'all_produk' => $all_produk]);
         
     }
@@ -156,8 +159,7 @@ class ProdukController extends Controller
         return redirect()->route('produk.index')
             ->with('success','Produk berhasil dihapus');
 
-     }
-     
+     }   
      public function cetak_pdf(){
         $all_produk = Produk::paginate(5);
         $pdf = PDF::loadview('admin.produk_cetakPdf',['all_produk'=>$all_produk]);

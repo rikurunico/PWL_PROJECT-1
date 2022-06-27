@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Kategori;
 use App\Models\Produk;
 use App\Models\User;
@@ -27,6 +28,7 @@ class CustomerPageController extends Controller
         }
 
         $category = Kategori::where('nama_kategori', '=', $keyword)->first();
+        $all_cart = Cart::all()->where('user_id',Auth::user()->id);
         
         $data = Produk::with('kategori')
             ->where('kategori_id', '=', $category->id)
@@ -36,21 +38,35 @@ class CustomerPageController extends Controller
         return view('customerpage.produk')
         ->with('title', 'Dz Fashion - Produk')
         ->with('all_produk', $data)
+        ->with('all_cart', $all_cart)
         ->with('active', $aktif);
+    }
+    public function search(Request $request) {
+        $keyword = $request->cari;
+        
+        $data= Produk::where('nama_produk', 'like', '%' . $keyword . '%')->paginate(6);
+        return view('customerpage.produk')
+        ->with('title', 'Dz Fashion - Produk')
+        ->with('all_produk', $data);
     }
 
     public function supplier(){
     $all_supplier = Supplier::all();
+    $all_cart = Cart::all()->where('user_id',Auth::user()->id);
 
     return view('customerpage.supplier')
     ->with('title', 'Dz Fashion - Supplier')
-    ->with('all_supplier', $all_supplier);
+    ->with('all_supplier', $all_supplier)
+    ->with('all_cart', $all_cart);
 }
     public function profil()
     {
+        $all_cart = Cart::all()->where('user_id',Auth::user()->id);
         return view('customerpage.profil', [
             'title' => 'Dz Fashion - Profil Customer',
             'user' => Auth::user(),
+            'all_cart'=> $all_cart
+            
         ]);
     }
 
@@ -83,4 +99,27 @@ class CustomerPageController extends Controller
             
         return redirect()->route('profile')->with('success', 'Profil telah diupdate!');
     }
+    public function index()
+    {
+        $auth = Auth::user();
+        $all_produk = Produk::with('kategori')->paginate(5);
+        $all_cart = Cart::all()->where('user_id',Auth::user()->id);
+        return view('customerpage.produk',[
+            'auth' => $auth,
+            'all_produk' => $all_produk,
+            'all_cart' => $all_cart
+        ]);
+    }
+        public function detail($id)
+        {
+        $produk = Produk::where('id', $id)->first();
+        $all_cart = Cart::all()->where('user_id',Auth::user()->id);
+            return view('customerpage.detailproduk',[
+            'title' => 'Dz Fashion - Detail Produk',
+                'produk' => $produk,
+                'all_cart' => $all_cart,
+                'kategori' => Kategori::all(),
+                'related' => Produk::where('kategori_id', $produk->kategori_id)->take(3)->get()->except($produk->id),
+            ]);
+        }
 }
