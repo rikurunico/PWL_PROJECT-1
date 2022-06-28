@@ -34,10 +34,11 @@ https://templatemo.com/tm-558-klassy-cafe
 
     <link rel="stylesheet" href="{{asset('frontend/asset/css/main.css')}}">
 
+  
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script src="vendor/sweetalert/sweetalert.all.js"></script>
-    <!-- bootstrap -->
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
+ 
    
     </head>
     <body>

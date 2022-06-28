@@ -93,12 +93,12 @@
                   <p>Data Order</p>
                 </a>
               </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="{{ route('orderDetail.index') }}" class="nav-link {{ ($title === "Data Order Detail") ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p> Data Order Detail</p>
                 </a>
-              </li>
+              </li> --}}
             </ul>
           </li>
           

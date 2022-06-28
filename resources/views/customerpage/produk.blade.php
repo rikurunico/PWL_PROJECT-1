@@ -21,7 +21,7 @@
                 </div>
               </form>  --}}
             <div class="row d-flex justify-content-center">
-                <form action="#" method="GET">
+                <form action="{{ route('produk.search') }}" method="GET">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Search here " name="query" id="search">
                         <button class="btn btn-default" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>

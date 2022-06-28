@@ -15,6 +15,9 @@
                             <li class="scroll-to-section"><a href="{{url('/customer/supplier')}}" class="{{ ($title == 'Dz Fashion - Supplier' )? 'active' : '' }}">Supplier</a></li>
                             <li class="scroll-to-section"><a href="{{url('/customer/about')}}" class="{{ ($title == 'Dz Fashion - About' )? 'active' : ''}}">About</a></li> 
                             <li class="scroll-to-section"><a href="{{url('/customer/profil')}}" class="{{ ($title == 'Dz Fashion - Profil Customer' )? 'active' : ''}}">Hello, {{ Auth::user() -> username }}</a></li> 
+                            @auth
+                            <li class="scroll-to-section"><a href="{{url('order/my-orders')}}" class="{{ ($title == 'Dz Fashion - My Order' )? 'active' : ''}}">My Orders</a></li>
+                            @endauth
                             <a href="{{ route('cart.index') }}" >
                             <button class="btn btn-light text-black position-relative">
                                 <i class="fas fa-shopping-cart fa-sm" ></i>
