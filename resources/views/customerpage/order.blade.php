@@ -21,9 +21,9 @@
             onclick="window.location.href = '/pembayaran/{{$order->id}}'">
             <div class="card-body">
             @foreach ($order->orderDetail as $od)
-                <span class="product-name">{{ $od->produk->nama_produk }}, </span>
-                <span class="product-price">qty:{{ $od->qty }}, </span>
-                <span class="product-price">harga: Rp. {{ number_format($od->produk->harga) }}</span>
+                <span class="product-name">{{ $od->produk->nama_produk }} </span><br>
+                <span class="product-price">Quantity : {{ $od->qty }} </span><br>
+                <span class="product-price">Harga : Rp. {{ number_format($od->produk->harga) }}</span>
                 <hr>              
             @endforeach
                 <span class="product-price">Metode bayar: {{ $order->pembayaran->pembayaran }}</span><br>

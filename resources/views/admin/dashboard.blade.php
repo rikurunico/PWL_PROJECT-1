@@ -71,12 +71,12 @@
           <div class="card-body">
             <div class="card-title d-flex align-items-start justify-content-between">
               <div class="avatar flex-shrink-0">
-                <a href="{{ route('supplier.index') }}"><i class="fa fa-shopping-bag" style="font-size:45px;color: #9DD6DF"></i></a>
+                <a href="{{ route('order.index') }}"><i class="fa fa-shopping-bag" style="font-size:45px;color: #9DD6DF"></i></a>
               </div>
             </div>
             <span class="fw-semibold d-block mb-1">Pemesanan</span>
             <span>
-              <h3 class="card-title mb-2 d-inline pr-3">{{ $supplier }}</h3>
+              <h3 class="card-title mb-2 d-inline pr-3">{{ $order }}</h3>
               <p class="d-inline">Order</p>
             </span>
           </div>
@@ -88,7 +88,7 @@
           <div class="d-flex align-items-end row">
             <div class="col-sm-12">
               <div class="card-body">
-                <h3 class="card-title text-primary">Halo, {{ ucwords(auth()-> user() -> name) }}! 🎉</h3>
+                <h3 class="card-title text-primary">Halo, {{ ucwords(auth()-> user() -> username) }}! 🎉</h3>
                 <p class="mb-4">
                   Bagaimana kabarmu hari ini? Tetap jaga kesehatan dan patuhi protokol kesehatan! semoga harimu
                   menyenangkan😄
@@ -107,6 +107,12 @@
                   <strong> DZ or Dina Zalfa </strong>Fashion eCommerce is a complete eCommerce that provides quality clothes from world-famous brands with up-to-date fashion models.
                   Sell clothes for all genders with all types of clothes. The goods sold in the DZ eCommerce are directly from the brand supplier itself. So, the goods 
                   are guaranteed original and exclusive.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam porro eaque pariatur, nisi maxime a odio. 
+                  loremAspernatur a libero deserunt modi accusantium quo, cum facere unde itaque quidem est animi? Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                  Fugiat asperiores aperiam at. Illum autem quo rerum in tempora quia voluptatem ex voluptatibus cupiditate. Vel, laboriosam. Ullam cumque eligendi nihil architecto?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque cumque, quaerat neque enim dolorum odio, harum repudiandae architecto sunt suscipit, adipisci quidem consectetur nobis nihil.
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque voluptatem nisi non modi, incidunt quisquam impedit necessitatibus consectetur enim alias tenetur obcaecati tempora temporibus 
+                  laudantium id neque aut sint doloremque natus reiciendis fugiat. Animi perspiciatis, dignissimos nemo doloremque incidunt quo explicabo consequuntur optio inventore alias officia repudiandae ut similique a necessitatibus rerum sit eaque deserunt tenetur autem sed cupiditate ipsam iusto. Officia reprehenderit veritatis natus consectetur beatae cum porro amet tenetur exercitationem cumque, rerum quae pariatur. Libero illum doloribus perferendis earum assumenda saepe quisquam, fuga aut. Expedita velit autem repellendus repudiandae, minima nostrum natus sunt doloribus perspiciatis, placeat debitis optio?
                 </p>
               </div>
             </div>

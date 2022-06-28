@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Kategori;
+use App\Models\Order;
 use App\Models\User;
 use App\Models\Produk;
 use App\Models\Supplier;
@@ -15,6 +16,7 @@ class DashboardController extends Controller
         $kategori = Kategori::all()->count();
         $produk = Produk::all()->count();
         $supplier = Supplier::all()->count();
+        $order = Order::all()->count();
 
         return view(
             'admin.dashboard',
@@ -23,6 +25,7 @@ class DashboardController extends Controller
                 'kategori' => $kategori,
                 'produk' => $produk,
                 'supplier' => $supplier,
+                'order' => $order,
             ]
         );
     }

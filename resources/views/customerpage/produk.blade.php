@@ -12,22 +12,6 @@
                     </div>
                 </div>
             </div>
-            {{-- <form action="#" method="GET">
-                <div class="d-flex justify-content-end">
-                  <div class="input-group mb-3 col-sm-4">
-                    <input type="text" class="form-control" placeholder="Search here" name="cari" id="search">
-                    <button class="btn btn-secondary" type="submit"> <i class="fas fa-search"></i> </button>
-                  </div>
-                </div>
-              </form>  --}}
-            <div class="row d-flex justify-content-center">
-                <form action="{{ route('produk.search') }}" method="GET">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search here " name="query" id="search">
-                        <button class="btn btn-default" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
-                </form>
-		    </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row" id="tabs">

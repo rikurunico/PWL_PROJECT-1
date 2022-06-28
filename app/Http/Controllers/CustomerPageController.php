@@ -13,26 +13,6 @@ use Illuminate\Support\Facades\Storage;
 
 class CustomerPageController extends Controller
 {
-    public function index2()
-    {
-    if (request('search')){
-        $all_produk = Produk::with('kategori')
-                                ->orWhere('nama_produk', 'like', '%'.request('search').'%')
-                                ->orWhere('kategori_id', 'like', '%'.request('search').'%')
-                                ->orWhereHas('kategori', function($query) {
-                                    $query->where('nama_kategori', 'like', '%' .request('search'). '%');
-                                })
-                                ->paginate(
-                                    $perPage = 5, $columns = ['*'], $pageName = 'produk'
-                                );
-                                return view('admin.dataproduk', compact('all_produk'));
-    } else {
-        $produk = Produk::with('kategori')->get(); // Mengambil semua isi tabel
-        $all_produk = Produk::orderBy('id', 'asc')->paginate(5);
-        $all_cart = Cart::all()->where('user_id',Auth::user()->id);
-        return view('admin.dataproduk', ['produk' => $produk, 'all_produk' => $all_produk]);
-    }
-}
     public function produk($keyword){
      
         $aktif = '';
@@ -60,14 +40,6 @@ class CustomerPageController extends Controller
         ->with('all_produk', $data)
         ->with('all_cart', $all_cart)
         ->with('active', $aktif);
-    }
-    public function search(Request $request) {
-        $keyword = $request->cari;
-        
-        $data= Produk::where('nama_produk', 'like', '%' . $keyword . '%')->paginate(6);
-        return view('customerpage.produk')
-        ->with('title', 'Dz Fashion - Produk')
-        ->with('all_produk', $data);
     }
 
     public function supplier(){
