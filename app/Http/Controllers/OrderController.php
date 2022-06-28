@@ -21,8 +21,12 @@ class OrderController extends Controller
     public function index()
     {
         if (request('search')){
-            $all_order = Order::where('total', 'like', '%'.request('search').'%')
-                                    ->orwhere('tanggal_order', 'like', '%'.request('search').'%')
+            $all_order = Order::with('user')
+                                    ->where('total', 'like', '%'.request('search').'%')
+                                    ->orwhere('username', 'like', '%'.request('search').'%')
+                                    ->orWhereHas('user', function($query) {
+                                        $query->where('username', 'like', '%' .request('search'). '%');
+                                    })
                                     ->paginate(5);
             return view('admin.dataorder', ['all_order'=>$all_order]);
         } else {
@@ -101,9 +105,9 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = Order::where('id', $id)->first();
+        $order = Order::with('orderDetail', 'pembayaran', 'user')->where('id', $id)->first();
 
-        return view('admin.order.detailOrder',[
+        return view('admin.order.detail',[
             'order' => $order
         ]);
     }
@@ -146,9 +150,40 @@ class OrderController extends Controller
     {
         $all_cart = Cart::where('user_id', auth()->user()->id)->get();
         $data = $request->all();
-        $order = Order::find($data['order_id']);
-
+        $order = Order::with('orderDetail', 'pembayaran')->find($data['order_id']);
         return view('customerpage.pembayaran', compact('all_cart', 'data', 'order'));
+    }
+
+    public function showMyOrders()
+    {
+        $all_cart = Cart::where('user_id', auth()->user()->id)->get();
+        $orders = Order::with('orderDetail', 'orderDetail.produk')
+                        ->where('user_id', auth()->user()->id)
+                        ->get();
+        
+        return view('customerpage.order', compact('all_cart', 'orders'));
+    }
+
+    public function terima($id)
+    {   
+        $all_cart = Cart::where('user_id', auth()->user()->id)->get();
+        $order = Order::with('orderDetail', 'orderDetail.produk')
+                        ->find($id);
+        $order->status = 2;
+        $order->save();
+
+        return redirect()->route('order.show', $order->id);
+    }
+
+    public function tolak($id)
+    {
+        $all_cart = Cart::where('user_id', auth()->user()->id)->get();
+        $order = Order::with('orderDetail', 'orderDetail.produk')
+                        ->find($id);
+        $order->status = 0;
+        $order->save();
+
+        return redirect()->route('order.show', $order->id);
     }
     
 }

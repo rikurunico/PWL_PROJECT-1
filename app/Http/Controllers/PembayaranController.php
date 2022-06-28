@@ -35,8 +35,9 @@ class PembayaranController extends Controller
     public function show($order_id) 
     {
         $order = Order::find($order_id);
+        $all_cart = Cart::where('user_id', auth()->user()->id)->get();
         // dd($order);
-        return view('customerpage.pembayaran', compact('order'));
+        return view('customerpage.pembayaran', compact('order', 'all_cart'));
     }
 
     public function store(Request $request)
@@ -55,6 +56,7 @@ class PembayaranController extends Controller
         }
 
         $validatedData['tanggal_pembayaran'] = Carbon::now()->toDateTimeString();
+        
         // dd($validatedData);
         Pembayaran::create($validatedData);
 
@@ -64,8 +66,13 @@ class PembayaranController extends Controller
         $order->status = 1;
         $order->save();
 
+        $orders = Order::with('orderDetail', 'orderDetail.produk', 'pembayaran')
+                        ->where('user_id', $order->user_id)
+                        ->get();
         return view('customerpage.order')
         ->with('all_cart', $all_cart)
+        ->with('orders', $orders)
         ->with('success', 'Silahkan menunggu validasi');
     }    
+    
 }

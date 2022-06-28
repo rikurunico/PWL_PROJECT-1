@@ -22,12 +22,17 @@ class ProdukController extends Controller
     public function index()
     {
     if (request('search')){
-        $all_produk = Produk::where('nama_produk', 'like', '%'.request('search').'%')
+        $all_produk = Produk::with('kategori')
+                                ->orWhere('nama_produk', 'like', '%'.request('search').'%')
                                 ->orWhere('kategori_id', 'like', '%'.request('search').'%')
+                                ->orWhereHas('kategori', function($query) {
+                                    $query->where('nama_kategori', 'like', '%' .request('search'). '%');
+                                })
                                 ->paginate(
                                     $perPage = 5, $columns = ['*'], $pageName = 'produk'
                                 );
-        return view('admin.dataproduk', ['all_produk'=>$all_produk]);
+                                return view('admin.dataproduk', compact('all_produk'));
+        // return view('admin.dataproduk', ['all_produk'=>$all_produk]);
     } else {
         $produk = Produk::with('kategori')->get(); // Mengambil semua isi tabel
         $all_produk = Produk::orderBy('id', 'asc')->paginate(5);
@@ -162,8 +167,10 @@ class ProdukController extends Controller
      }   
      public function cetak_pdf(){
         $all_produk = Produk::paginate(5);
+        // dd($all_produk);
         $pdf = PDF::loadview('admin.produk_cetakPdf',['all_produk'=>$all_produk]);
         return $pdf->stream();
+
         // return view ('admin.produk_cetakPdf',['all_produk'=>$all_produk]);
     //     $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif', 'isPhpEnabled' => true, 'isRemoteEnabled' =>true
     // ]);
