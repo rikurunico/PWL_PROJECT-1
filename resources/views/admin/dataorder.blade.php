@@ -44,6 +44,7 @@
                       <th scope="col">Nama Customer</th>
                       <th scope="col">Total</th>
                       <th scope="col">Tanggal order</th>
+                      <th scope="col">Status</th>
                       <th scope="col">Action</th>
                   </tr>
               </thead>
@@ -54,8 +55,10 @@
                  <td>{{($order->user->username)}}</td>
                  <td>Rp{{number_format($order->total,2,',','.')}}</td>
                  <td>{{($order->tanggal_order)}}</td>
+                 <td>{{($order->status)}}</td>
                  <td width="250px">
                     <a class="btn btn-info" href="{{ route('order.show',$order->id) }}">Show</a>
+                    <a class="btn btn-warning" href="#">Edit Status</a>
                 </td>
                 </tr>
                    @endforeach

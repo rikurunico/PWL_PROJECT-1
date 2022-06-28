@@ -14,17 +14,6 @@ class OrderDetailSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('order_detail')->insert([
-            [
-                'produk_id' => 1,
-                'order_id' => 1,
-                'qty' => 1
-            ],
-            [
-                'produk_id' => 2,
-                'order_id' => 2,
-                'qty' => 2
-            ]
-        ]); 
+        
     }
 }

@@ -15,7 +15,8 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'total',
-        'tanggal_order'
+        'tanggal_order',
+        'status'
     ];
 
     public function user()

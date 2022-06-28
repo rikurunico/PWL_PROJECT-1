@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-lg-8 offset-lg-2 text-center">
 				<div class="breadcrumb-text">
-					<p>Diza The Best Fashion/p>
+					<p>Diza The Best Fashion</p>
 					<h1>Cart</h1>
 				</div>
 			</div>
@@ -109,8 +109,7 @@
                                 @method('DELETE')
                                 <input name="_method" type="hidden" value="DELETE" onsubmit="return confirm('Apakah anda yakin menghapus data?')">
                                 <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'><i
-                                    class="fa fa-trash"></i></button>
-                               
+                                    class="fa fa-trash"></i></button>                               
                             </form>
                         </td>
                     </tr>
@@ -147,11 +146,16 @@
                 </tbody>
             </table>
             <div class="cart-buttons">
-                <button class="boxed-btn text-center border-0 " @if (empty($cart)) disabled @endif><a
-                        href="/checkout" class="text-white d-block " style="width: 100%; @if (empty($cart))
-                            pointer-events: none;
-                        @endif">Checkout</a>
-                </button>
+                <form action="/checkout/{{ Auth::user()->id }}" method="post">
+                    @csrf
+                    <button type="submit" class="boxed-btn text-center border-0 " @if (empty($cart)) disabled @endif>
+                            {{-- <a
+                            href="/checkout" class="text-white d-block " style="width: 100%; @if (empty($cart))
+                                pointer-events: none;
+                            @endif">Checkout</a> --}}
+                        Checkout
+                    </button>
+                </form>
             </div>
         </div>
     </div>

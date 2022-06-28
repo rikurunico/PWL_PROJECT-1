@@ -19,6 +19,7 @@ class CreateOrderTable extends Migration
             $table->foreign('user_id')->references('id')->on('users'); //menambahkan foreign key di kolom user_id
             $table->integer('total');
             $table->date('tanggal_order');
+            $table->integer('status');
             $table->timestamps();
         });
     }
