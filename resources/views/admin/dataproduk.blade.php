@@ -14,7 +14,7 @@
                 <div class="row flex-row">
                     <div class="col-md-4">
                         <div class="input-group">    
-                            <input type="text" name="search" class="form-control" placeholder="Cari Nama Produk" aria-label="search" aria-describedby="basic-addon1">
+                            <input type="text" name="search" class="form-control" placeholder="Cari Nama Produk/Nama Kategori" aria-label="search" aria-describedby="basic-addon1">
                             <div class="input-group-append">
                                 <input type="submit" value="Cari" class="btn btn-secondary" id="search">
                             </div>
@@ -28,7 +28,7 @@
                     <div class="row">
                       <div class="col-md-12">
                           <div class="float-right my-2">
-                              <a href="{{route('cetak_pdf')}}"><i class="fa fa-file-pdf-o" style="font-size:30px;color: #9DD6DF"></i></a>  
+                              <a href="/produk/cetak_pdf"><i class="fa fa-file-pdf-o" style="font-size:30px;color: #9DD6DF"></i></a>  
                           </div>
                       </div>
                 </div>

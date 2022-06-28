@@ -359,7 +359,7 @@
 				</div>
 				<div class="col-lg-4">
 					<div class="order-details-wrap">
-						<table class="order-details" style="width: 270px">
+						<table class="order-details" style="width: 350px">
 							@php
 
 							if (!empty($order)) {
@@ -370,7 +370,7 @@
 							<thead>
 								<tr>
 									<th><strong>Produk</strong></th>
-									<th><strong>Total</strong></th>
+									<th><strong>Subtotal</strong></th>
 								</tr>
 							</thead>
 							<tbody class="order-details-body">
@@ -378,7 +378,7 @@
 								@foreach ($orderDetails as $orders)
 								<tr>
 									<td>{{ $orders -> produk -> nama_produk}}</td>
-									<td>Rp. {{ ($orders ->produk->harga) - ($orders ->produk->harga * $orders->produk->diskon)}}</td>
+									<td>Rp. {{ (($orders->produk->harga * $orders->qty) - ($orders->produk->harga * $orders->qty * $orders->produk->diskon)) }}</td>
 								</tr>
 								@endforeach
 								@else
@@ -395,13 +395,13 @@
 								@if (!empty($order))
 								<tr style="border-top: 5px">
 									<td><strong>Total</strong></td>
-									<td><strong>Rp. {{ number_format($order -> total) }}</strong></td>
+									<td><strong>Rp. {{ number_format($order->total) }}</strong></td>
 								</tr>
 								@endif
 							</tbody>
 						</table>
 						<button type="submit" class="boxed-btn text-center border-0 mt-4"
-							style="width: 270px">Selesaikan
+							style="width: 350ppx">Selesaikan
 							Pembayaran</button>
 					</div>
 				</div>

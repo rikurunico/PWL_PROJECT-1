@@ -162,19 +162,19 @@ $OD = \App\Models\OrderDetail::where('order_id', $order->id)->get();
                 </div>
                 <div class="col-lg-4">
                     <div class="order-details-wrap">
-                        <table class="order-details" style="width: 270px">
+                        <table class="order-details" style="width: 350px">
                             <thead>
                                 <tr>
-                                    <th><strong>Product</strong></th>
-                                    <th><strong>Total</strong></th>
+                                    <th><strong>Produk</strong></th>
+                                    <th><strong>Subtotal</strong></th>
                                 </tr>
                             </thead>
                             <tbody class="order-details-body"> 
                                 @if (!empty($order)) 
                                 @foreach ($OD as $orders)
                                 <tr>
-                                <td>{{ $orders -> produk -> nama_produk }}</td>
-                                <td>Rp. {{ ($orders ->produk->harga) - ($orders ->produk->harga * $orders->produk->diskon)}}</td>
+                                <td>{{ $orders->produk->nama_produk }}</td>
+                                <td>Rp. {{ number_format(($orders->produk->harga * $orders->qty) - ($orders->produk->harga * $orders->qty * $orders->produk->diskon))}}</td>
                                 </tr>
                                 @endforeach
                                 @else
@@ -194,7 +194,7 @@ $OD = \App\Models\OrderDetail::where('order_id', $order->id)->get();
                                 @endif
                             </tbody>
                         </table>
-                        
+                            @if($order->status == 0)
                             <div class="form-group my-4" style="widows: 270px">
                                 <label for="exampleInputEmail1">Bukti Pembayaran</label>
                                 <input type="file" name="bukti_pembayaran" class="form-control" id="exampleInputEmail1"
@@ -204,11 +204,17 @@ $OD = \App\Models\OrderDetail::where('order_id', $order->id)->get();
                             </div>
                             <input type="hidden" name="order_id" value="{{ $order->id }}">
                             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                            <input type="hidden" name="pembayaran" value="{{ $data['pembayaran'] }}">
+                            <input type="hidden" name="pembayaran" value="{{ (empty($order->pembayaran)) ? $data['pembayaran'] : $order->pembayaran->pembayaran }}">
                             <input type="hidden" name="total_bayar" value="{{ $order->total }}">
                             <button type="submit" class="boxed-btn text-center border-0 mt-4"
                                 style="width: 270px">Selesai!</button>
-                        
+                            @elseif ($order->status == 1)
+                            <label type="hidden" class="boxed-btn text-center border-0 mt-4"
+                            style="width: 350x">Pemesanan Sudah di Bayar!</label>
+                            @else
+                            <label type="hidden" class="boxed-btn text-center border-0 mt-4"
+                            style="width: 350px">Pemesanan Sudah di Bayar & Terverifikasi!</label>
+                            @endif
                     </div>
                 </div>
             </div>

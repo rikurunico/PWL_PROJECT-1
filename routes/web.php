@@ -30,12 +30,16 @@ Route::get('/', function () {
     return redirect()->route('LoginPage');
 });
 
-Route::post('checkout/{user_id}', [OrderController::class, 'store'])->name('order.store');
+Route::post('checkout/{user_id}', [OrderController::class, 'store'])->name('order.checkout');
 Route::get('pembayaran/{order_id}', [PembayaranController::class, 'show'])->name('pembayaran.show');
 
 Route::get('checkout/pembayaran', [OrderController::class, 'payment']);
-
+Route::get('pembayaran/orderterima/{order_id}', [OrderController::class, 'terima'])->name('order.terima');
+Route::get('pembayaran/ordertolak/{order_id}', [OrderController::class, 'tolak'])->name('order.tolak');
 Route::post('pembayaran/order/{order_id}', [PembayaranController::class, 'store']);
+
+
+Route::get('order/my-orders', [OrderController::class, 'showMyOrders'])->name('myOrder.show');
 
 Route::get('/login', function () {
     return view('loginPage.loginPage',
@@ -51,14 +55,15 @@ Route::post('/postregister', [RegisterController::class, 'store']) -> name('regi
 Route::middleware(['auth','cekStatus:admin'])->group(function () {
     Route::get('/homeAdmin', [DashboardController::class, 'index']) -> name('homePageAdmin');
     Route::resource('kategori', KategoriController::class);
-    Route::resource('produk', ProdukController::class);
     Route::resource('supplier', SupplierController::class);
     Route::resource('user', UserController::class);
-    // Route::resource('order', OrderController::class);
+    Route::resource('order', OrderController::class);
     Route::resource('orderDetail', OrderDetailController::class);
     Route::get('/admin/profil', [UserController::class, 'profil'])->name('profiladmin');
     Route::put('/admin/profil/{id}', [UserController::class, 'updateprofil']);
     Route::get('/produk/cetak_pdf', [ProdukController::class, 'cetak_pdf'])->name('cetak_pdf');
+    
+    Route::resource('produk', ProdukController::class);
 });
 
 
@@ -71,7 +76,7 @@ Route::middleware(['auth','cekStatus:customer'])->group(function () {
 
 
 Route::get('/customer/produk/{keyword}',[CustomerPageController::class, 'produk'])->name('LD');
-Route::get('/customer/produk/search', [CustomerPageController::class, 'search'])->name('produk.search');
+Route::get('/customer/produk/search', [CustomerPageController::class, 'index2'])->name('produk.search');
 Route::get('/customer/supplier', [CustomerPageController::class, 'supplier']);
 Route::get('/customer/profil', [CustomerPageController::class, 'profil'])->name('profile');
 Route::put('/customer/profil/{id}', [CustomerPageController::class, 'update']);

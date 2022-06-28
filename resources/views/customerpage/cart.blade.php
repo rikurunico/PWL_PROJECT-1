@@ -69,7 +69,6 @@
                 $totalBayar += $total;
                 $hargaDiskon = $cart->produk->harga -= ($cart->produk->harga * $cart->produk->diskon)
                 @endphp
-                
                     <tr>
                     <td class="text-center"> {{ ($cart->id) }} </td>   
                         <td class="hidden pb-4 md:table-cell">
@@ -149,10 +148,6 @@
                 <form action="/checkout/{{ Auth::user()->id }}" method="post">
                     @csrf
                     <button type="submit" class="boxed-btn text-center border-0 " @if (empty($cart)) disabled @endif>
-                            {{-- <a
-                            href="/checkout" class="text-white d-block " style="width: 100%; @if (empty($cart))
-                                pointer-events: none;
-                            @endif">Checkout</a> --}}
                         Checkout
                     </button>
                 </form>

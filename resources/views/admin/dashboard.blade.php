@@ -82,24 +82,8 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-2 col-md-12 col-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <div class="card-title d-flex align-items-start justify-content-between">
-              <div class="avatar flex-shrink-0">
-                <a href="{{ route('supplier.index') }}"><i class="fa fa-truck" style="font-size:43px;color: #9DD6DF"></i></a>
-              </div>
-            </div>
-            <span class="fw-semibold d-block mb-1">Shipping</span>
-            <span>
-              <h3 class="card-title mb-2 d-inline pr-3">{{ $supplier }}</h3>
-              <p class="d-inline">dikirim</p>
-            </span>
-          </div>
-        </div>
-      </div>
     <div class="row">
-      <div class="col-lg-8 mb-4 order-0">
+      <div class="col-lg-12 mb-4 order-0">
         <div class="card mb-4">
           <div class="d-flex align-items-end row">
             <div class="col-sm-12">
@@ -131,112 +115,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-md-4 order-1">
-        <div class="row">
-          <div class="col-lg-12 col-md-12 col-6 mb-4">
-            <div class="card h-100">
-              <div class="card-header d-flex align-items-center justify-content-between">
-                <h5 class="card-title m-0 me-2"><a href="/admin/order">Transactions</a></h5>
-  
-              </div>
-              <div class="card-body">
-                <ul class="p-0 m-0">
-                  <li class="d-flex mb-4 pb-1">
-  
-                    <img src="{{ asset('img/payments/shopeepay.png') }}" alt="User" class="rounded" width="100px">
-  
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 mx-2">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Total</small>
-                        <h6 class="mb-0">{{ $user }}</h6>
-                      </div>
-                      <div class="user-progress d-flex align-items-center gap-1">
-                        <span class="text-muted">Rp.</span>
-                        <h6 class="mb-0">{{ number_format($user) }}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-  
-                    <img src="{{ asset('img/payments/linkaja.png') }}" alt="User" class="rounded" width="100px">
-  
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 mx-2">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Total</small>
-                        <h6 class="mb-0">{{ $user}}</h6>
-                      </div>
-                      <div class="user-progress d-flex align-items-center gap-1">
-                        <span class="text-muted">Rp.</span>
-                        <h6 class="mb-0">{{ number_format($user) }}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-  
-                    <img src="{{ asset('img/payments/gopay.png') }}" alt="User" class="rounded" width="100px">
-  
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 mx-2">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Total</small>
-                        <h6 class="mb-0">{{ $user }}</h6>
-                      </div>
-                      <div class="user-progress d-flex align-items-center gap-1">
-                        <span class="text-muted">Rp.</span>
-                        <h6 class="mb-0">{{ number_format($user) }}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-  
-                    <img src="{{ asset('img/payments/bri.png') }}" alt="User" class="rounded" width="100px">
-  
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 mx-2">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Total</small>
-                        <h6 class="mb-0">{{ $user}}</h6>
-                      </div>
-                      <div class="user-progress d-flex align-items-center gap-1">
-                        <span class="text-muted">Rp.</span>
-                        <h6 class="mb-0">{{ number_format($user) }}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-  
-                    <img src="{{ asset('img/payments/bca.png') }}" alt="User" class="rounded" width="100px">
-  
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 mx-2">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Total</small>
-                        <h6 class="mb-0">{{ $user }}</h6>
-                      </div>
-                      <div class="user-progress d-flex align-items-center gap-1">
-                        <span class="text-muted">Rp.</span>
-                        <h6 class="mb-0">{{ number_format($user) }}</h6>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="d-flex mb-4 pb-1">
-  
-                    <img src="{{ asset('img/payments/mandiri.png') }}" alt="User" class="rounded" width="100px">
-  
-                    <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2 mx-2">
-                      <div class="me-2">
-                        <small class="text-muted d-block mb-1">Total</small>
-                        <h6 class="mb-0">{{ $user }}</h6>
-                      </div>
-                      <div class="user-progress d-flex align-items-center gap-1">
-                        <span class="text-muted">Rp.</span>
-                        <h6 class="mb-0">{{ number_format($user) }}</h6>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+ 
     </div>
   </div>
   <!-- / Content -->
