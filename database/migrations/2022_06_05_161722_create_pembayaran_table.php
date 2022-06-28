@@ -19,12 +19,10 @@ class CreatePembayaranTable extends Migration
             $table->foreign('order_id')->references('id')->on('order'); //menambahkan foreign key di kolom order_id
             $table->unsignedBigInteger('user_id'); //menambahkan kolom user_id
             $table->foreign('user_id')->references('id')->on('users'); //menambahkan foreign key di kolom user_id
-            $table->integer('pembayaran');
-            $table->string('bukti_pembayaran', 50);
-            $table->unsignedBigInteger('pengiriman_id'); //menambahkan kolom pengiriman_id
-            $table->foreign('pengiriman_id')->references('id')->on('pengiriman'); //menambahkan foreign key di kolom pengiriman_id
+            $table->string('pembayaran');
+            $table->integer('total_bayar');
+            $table->string('bukti_pembayaran');
             $table->timestamp('tanggal_pembayaran');
-            $table->string('status');
             $table->timestamps();
         });
     }

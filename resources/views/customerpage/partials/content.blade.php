@@ -36,6 +36,8 @@ https://templatemo.com/tm-558-klassy-cafe
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script src="vendor/sweetalert/sweetalert.all.js"></script>
+    <!-- bootstrap -->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
    
     </head>
     <body>
@@ -61,6 +63,7 @@ https://templatemo.com/tm-558-klassy-cafe
     
     <!-- ***** Footer Start ***** -->
     @include('customerpage.partials.footer')
+
      {{-- link ion icon --}}
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
 
@@ -68,6 +71,7 @@ https://templatemo.com/tm-558-klassy-cafe
     <script src="{{asset('frontend/asset/js/jquery-2.1.0.min.js')}}"></script>
 
     <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="{{asset('frontend/asset/js/popper.js')}}"></script>
     <script src="{{asset('frontend/asset/js/bootstrap.min.js')}}"></script>
 

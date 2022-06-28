@@ -16,8 +16,10 @@ class Pembayaran extends Model
         'order_id',
         'user_id',
         'pembayaran',
+        'total_bayar',
         'bukti_pembayaran',
-        'pengiriman'
+        'ekspedisi',
+        'tanggal_pembayaran'
     ];
 
     public function order()

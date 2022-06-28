@@ -12,6 +12,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\PembayaranController;
 use App\Models\Cart;
 
 /*
@@ -28,6 +29,13 @@ use App\Models\Cart;
 Route::get('/', function () {
     return redirect()->route('LoginPage');
 });
+
+Route::post('checkout/{user_id}', [OrderController::class, 'store'])->name('order.store');
+Route::get('pembayaran/{order_id}', [PembayaranController::class, 'show'])->name('pembayaran.show');
+
+Route::get('checkout/pembayaran', [OrderController::class, 'payment']);
+
+Route::post('pembayaran/order/{order_id}', [PembayaranController::class, 'store']);
 
 Route::get('/login', function () {
     return view('loginPage.loginPage',
@@ -46,7 +54,7 @@ Route::middleware(['auth','cekStatus:admin'])->group(function () {
     Route::resource('produk', ProdukController::class);
     Route::resource('supplier', SupplierController::class);
     Route::resource('user', UserController::class);
-    Route::resource('order', OrderController::class);
+    // Route::resource('order', OrderController::class);
     Route::resource('orderDetail', OrderDetailController::class);
     Route::get('/admin/profil', [UserController::class, 'profil'])->name('profiladmin');
     Route::put('/admin/profil/{id}', [UserController::class, 'updateprofil']);
